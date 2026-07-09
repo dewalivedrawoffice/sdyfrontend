@@ -97,7 +97,7 @@
               "description": "Live Draw SDY Lotto hari ini tercepat. Result SDY Lotto & Live Draw Sydney resmi real-time, lengkap data keluaran SDY Lotto.",
               "inLanguage": "id-ID",
               "isPartOf": { "@id": "https://livesdylotto.me/#website" },
-              "dateModified": "2026-07-10T00:56:36.438244+07:00",
+              "dateModified": "2026-07-10T01:04:19.347185+07:00",
               "primaryImageOfPage": {
                 "@type": "ImageObject",
                 "url": "https://livesdylotto.me/img/livedrawsdylotto.png"
@@ -383,6 +383,8 @@
             font-weight: 600;
             color: var(--color-text-dim);
             font-size: 1rem;
+            width: 90px;
+            white-space: nowrap;
         }
 
         .prize-num {
@@ -401,10 +403,10 @@
         /* ===== BALL NUMBERS ===== */
         .ball-group {
             display: inline-flex;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             justify-content: center;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             letter-spacing: normal;
             text-shadow: none;
             line-height: 1;
@@ -416,12 +418,12 @@
             align-items: center;
             justify-content: center;
             flex: 0 0 auto;
-            width: 40px;
-            height: 40px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
             font-family: 'Segoe UI', Roboto, Arial, sans-serif;
             font-weight: 800;
-            font-size: 1.2rem;
+            font-size: 1rem;
             line-height: 1;
             letter-spacing: normal;
             color: #fff;
@@ -441,9 +443,9 @@
         }
 
         .ball-lg .ball {
-            width: 52px;
-            height: 52px;
-            font-size: 1.6rem;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
         }
 
         .result-cell {
@@ -552,6 +554,22 @@
 
             .history-table td {
                 font-size: 1.1rem;
+            }
+
+            .ball-group {
+                gap: 6px;
+            }
+
+            .ball {
+                width: 42px;
+                height: 42px;
+                font-size: 1.2rem;
+            }
+
+            .ball-lg .ball {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
             }
         }
     </style>
