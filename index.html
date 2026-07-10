@@ -97,7 +97,7 @@
               "description": "Live Draw SDY Lotto hari ini tercepat. Result SDY Lotto & Live Draw Sydney resmi real-time, lengkap data keluaran SDY Lotto.",
               "inLanguage": "id-ID",
               "isPartOf": { "@id": "https://livesdylotto.me/#website" },
-              "dateModified": "2026-07-10T15:54:29.358109+07:00",
+              "dateModified": "2026-07-10T20:28:40.136439+07:00",
               "primaryImageOfPage": {
                 "@type": "ImageObject",
                 "url": "https://livesdylotto.me/img/livedrawsdylotto.png"
@@ -371,8 +371,9 @@
         }
 
         .live-table td {
-            padding: 15px 5px;
+            padding: 12px 4px;
             border-bottom: 1px solid #1a1000;
+            word-break: break-word;
         }
 
         .live-table tr:last-child td {
@@ -382,54 +383,63 @@
         .cat-name {
             font-weight: 600;
             color: var(--color-text-dim);
-            font-size: 1rem;
-            width: 90px;
+            font-size: 0.95rem;
+            width: 70px;
             white-space: nowrap;
         }
 
         .prize-num {
             font-size: 1.6rem;
             font-weight: bold;
-            letter-spacing: 2px;
+            letter-spacing: 0;
             color: #fff;
+            /* penting: cegah isi kolom melebar keluar tabel */
+            max-width: 100%;
+            overflow-wrap: break-word;
         }
 
         .p-one {
             color: var(--color-accent);
-            font-size: 2.2rem;
+            /* font-size besar hanya dipakai bila TIDAK berisi bola;
+               di dalam .ball-group ukuran font diatur ulang oleh .ball */
+            font-size: 1.8rem;
             text-shadow: 0 0 15px rgba(255, 140, 26, 0.5);
         }
 
         /* ===== BALL NUMBERS ===== */
         .ball-group {
-            display: inline-flex;
-            flex-wrap: nowrap;
+            display: flex;               /* block-level flex agar tidak "meledak" ke luar td */
+            flex-wrap: nowrap;           /* JANGAN turun baris — kalau sempit biar mengecil */
             justify-content: center;
             align-items: center;
             gap: 4px;
+            max-width: 100%;
+            min-width: 0;                /* wajib supaya flex-item boleh menyusut */
             letter-spacing: normal;
             text-shadow: none;
             line-height: 1;
-            vertical-align: middle;
+            font-size: 1rem;             /* reset ukuran font dari parent (.p-one dsb) */
         }
 
         .ball {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            flex: 0 0 auto;
-            width: 34px;
-            height: 34px;
+            /* grow:0, shrink:1, basis:28px  → boleh mengecil kalau tidak muat */
+            flex: 0 1 28px;
+            aspect-ratio: 1 / 1;         /* jaga bentuk bulat saat width mengecil */
+            min-width: 0;
             border-radius: 50%;
             font-family: 'Segoe UI', Roboto, Arial, sans-serif;
             font-weight: 800;
-            font-size: 1rem;
+            font-size: 0.85rem;
             line-height: 1;
             letter-spacing: normal;
             color: #fff;
             background: radial-gradient(circle at 30% 25%, #ffb15a 0%, #cc6600 55%, #663300 100%);
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.35);
             border: 1px solid #ff8c1a;
+            overflow: hidden;            /* isi angka aman kalau bola mengecil ekstrem */
         }
 
         .ball-alt {
@@ -438,14 +448,13 @@
         }
 
         .ball-space {
-            width: 10px;
+            flex: 0 0 6px;
             height: 1px;
         }
 
         .ball-lg .ball {
-            width: 40px;
-            height: 40px;
-            font-size: 1.2rem;
+            flex-basis: 34px;            /* ukuran ideal Prize 1; tetap boleh menyusut */
+            font-size: 1rem;
         }
 
         .result-cell {
@@ -561,15 +570,18 @@
             }
 
             .ball {
-                width: 42px;
-                height: 42px;
-                font-size: 1.2rem;
+                flex-basis: 36px;
+                font-size: 1rem;
             }
 
             .ball-lg .ball {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
+                flex-basis: 44px;
+                font-size: 1.25rem;
+            }
+
+            .cat-name {
+                width: 110px;
+                font-size: 1rem;
             }
         }
     </style>
